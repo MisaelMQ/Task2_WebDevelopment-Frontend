@@ -9,6 +9,7 @@ import LoginPage from "../pages/LoginPage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
 import AdminRoute from "./AdminRoute.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
+import ChannelsPage from "../pages/ChannelsPage.jsx";
 
 function AppRoutes() {
     return (
@@ -33,16 +34,7 @@ function AppRoutes() {
                         }
                     />
 
-                    <Route
-                        path="/canales"
-                        element={
-                            <PagePlaceholder
-                                title="Canales"
-                                description="Administración de los canales de atención."
-                                icon="bi-diagram-3"
-                            />
-                        }
-                    />
+                    <Route path="/canales" element={<ChannelsPage />} />
 
                     <Route
                         path="/encuestas"
