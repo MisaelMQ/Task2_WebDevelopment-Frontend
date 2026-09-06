@@ -1,0 +1,100 @@
+.navbar {
+  min-height: var(--bcp-navbar-height);
+  background: var(--bcp-color-blue);
+  color: var(--bcp-text-on-dark);
+  box-shadow: var(--bcp-shadow-sm);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--bcp-navbar-height);
+  gap: var(--bcp-space-24);
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+
+.navbar__logo {
+  width: auto;
+  height: 2.25rem;
+}
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--bcp-space-8);
+  list-style: none;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: var(--bcp-space-16);
+  border-radius: var(--bcp-border-radius-8);
+  color: var(--bcp-text-on-dark);
+  font-size: var(--bcp-font-size-small);
+  font-weight: var(--bcp-font-weight-medium);
+  text-decoration: none;
+  transition: background-color var(--bcp-transition-fast);
+}
+
+.navbar__link:hover,
+.navbar__link:focus-visible,
+.navbar__link[aria-current="page"] {
+  background: rgb(255 255 255 / 14%);
+}
+
+.navbar__profile {
+  display: flex;
+  align-items: center;
+  gap: var(--bcp-space-12);
+}
+
+.navbar__avatar {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 2px solid rgb(255 255 255 / 40%);
+  border-radius: var(--bcp-border-radius-full);
+  background: rgb(255 255 255 / 12%);
+  font-weight: var(--bcp-font-weight-demi);
+}
+
+.internal-header {
+  background: var(--bcp-color-white);
+  border-bottom: 1px solid var(--bcp-border-color);
+  padding-block: var(--bcp-space-16);
+}
+
+.internal-header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bcp-space-24);
+}
+
+.internal-header__progress {
+  width: min(100%, 20rem);
+}
+
+.progress {
+  height: 0.5rem;
+  overflow: hidden;
+  border-radius: var(--bcp-border-radius-full);
+  background: var(--bcp-color-blue-100);
+}
+
+.progress__bar {
+  width: var(--progress, 0%);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--bcp-color-orange);
+}

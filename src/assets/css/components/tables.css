@@ -1,0 +1,94 @@
+.table-container {
+  overflow-x: auto;
+  border: 1px solid var(--bcp-border-color);
+  border-radius: var(--bcp-border-radius-8);
+  background: var(--bcp-color-white);
+  box-shadow: var(--bcp-shadow-sm);
+}
+
+.data-table {
+  width: 100%;
+  min-width: 48rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: var(--bcp-space-12) var(--bcp-space-16);
+  border-bottom: 1px solid var(--bcp-border-color);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.data-table th {
+  color: var(--bcp-text-dark-700);
+  background: var(--bcp-color-blue-100);
+  font-size: var(--bcp-font-size-small);
+  font-weight: var(--bcp-font-weight-demi);
+  white-space: nowrap;
+}
+
+.data-table td {
+  color: var(--bcp-text-dark-900);
+  font-size: var(--bcp-font-size-small);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.data-table tbody tr:hover {
+  background: var(--bcp-color-surface-hover);
+}
+
+.data-table__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--bcp-space-8);
+}
+
+.channel-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--bcp-space-12);
+  font-weight: var(--bcp-font-weight-medium);
+}
+
+.channel-name {
+  color: var(--bcp-text-dark-900);
+  font-weight: var(--bcp-font-weight-demi);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: var(--bcp-space-2) var(--bcp-space-8);
+  border-radius: var(--bcp-border-radius-full);
+  font-size: var(--bcp-font-size-extra-small);
+  font-weight: var(--bcp-font-weight-demi);
+  white-space: nowrap;
+}
+
+.status-badge--active,
+.status-badge--promoter {
+  color: var(--bcp-state-success);
+  background: var(--bcp-state-success-soft);
+}
+
+.status-badge--passive {
+  color: var(--bcp-state-warning);
+  background: var(--bcp-state-warning-soft);
+}
+
+.status-badge--inactive,
+.status-badge--detractor {
+  color: var(--bcp-state-error);
+  background: var(--bcp-state-error-soft);
+}
+
+.table-empty {
+  padding: var(--bcp-space-48) var(--bcp-space-24);
+  color: var(--bcp-text-dark-500);
+  text-align: center;
+}

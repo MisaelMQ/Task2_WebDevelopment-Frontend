@@ -1,122 +1,129 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import logoWhite from "./assets/img/logo/logo-white-with-bluebg-bo.svg";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="app-shell">
+      <header className="navbar">
+        <div className="container navbar__inner">
+          <a className="navbar__brand" href="/" aria-label="Ir al inicio">
+            <img
+              className="navbar__logo"
+              src={logoWhite}
+              alt="Logo institucional"
+            />
+          </a>
+
+          <nav aria-label="Navegación principal">
+            <ul className="navbar__nav">
+              <li>
+                <a
+                  className="navbar__link"
+                  href="/"
+                  aria-current="page"
+                >
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a className="navbar__link" href="/">
+                  Canales
+                </a>
+              </li>
+              <li>
+                <a className="navbar__link" href="/">
+                  Encuestas
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <div className="navbar__profile">
+            <div>
+              <p className="small-flexo text-demi">Sistema NPS</p>
+              <p className="extra-small-flexo">Configuración inicial</p>
+            </div>
+
+            <span className="navbar__avatar" aria-hidden="true">
+              CX
+            </span>
+          </div>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+      </header>
+
+      <main className="page-main">
+        <div className="container">
+          <header className="page-header">
+            <div className="page-header__content">
+              <h1>CX Insight</h1>
+              <p className="text-muted">
+                Frontend React del Tablero NPS
+              </p>
+            </div>
+
+            <button className="button button--primary" type="button">
+              <i className="bi bi-check-circle" aria-hidden="true" />
+              Configuración correcta
+            </button>
+          </header>
+
+          <section
+            className="row g-3"
+            aria-label="Verificación de componentes"
+          >
+            <div className="col-12 col-md-6 col-xl-4">
+              <article className="card card--metric h-100">
+                <p className="metric-card__label">
+                  Sistema visual
+                </p>
+                <p className="metric-card__value">BCP</p>
+                <span className="metric-card__trend metric-card__trend--positive">
+                  Estilos cargados
+                </span>
+              </article>
+            </div>
+
+            <div className="col-12 col-md-6 col-xl-4">
+              <article className="card card--metric h-100">
+                <p className="metric-card__label">
+                  Diseño responsivo
+                </p>
+                <p className="metric-card__value">CSS3</p>
+                <span className="metric-card__trend metric-card__trend--positive">
+                  Bootstrap disponible
+                </span>
+              </article>
+            </div>
+
+            <div className="col-12 col-md-6 col-xl-4">
+              <article className="card card--metric h-100">
+                <p className="metric-card__label">
+                  Comunicación REST
+                </p>
+                <p className="metric-card__value">API</p>
+                <span className="metric-card__trend metric-card__trend--negative">
+                  Pendiente de configurar
+                </span>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer className="footer footer--slim">
+        <div className="container footer__inner">
+          <img
+            className="footer__logo"
+            src={logoWhite}
+            alt="Logo institucional"
+          />
+
+          <p className="small-flexo">
+            Panel de administración de experiencia del cliente
           </p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;

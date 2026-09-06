@@ -1,0 +1,19 @@
+.bcp-radius-4 {
+  border-radius: var(--bcp-border-radius-4);
+}
+
+.bcp-radius-8 {
+  border-radius: var(--bcp-border-radius-8);
+}
+
+.bcp-radius-12 {
+  border-radius: var(--bcp-border-radius-12);
+}
+
+.bcp-radius-16 {
+  border-radius: var(--bcp-border-radius-16);
+}
+
+.bcp-radius-full {
+  border-radius: var(--bcp-border-radius-full);
+}

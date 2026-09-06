@@ -1,0 +1,175 @@
+/* ==========================================================================
+   Records and Tables Page Styles - CX Insight
+   ========================================================================== */
+
+/* Enhanced toolbar with responsive layout */
+.records-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bcp-space-16);
+  margin-bottom: var(--bcp-space-16);
+  padding: var(--bcp-space-20);
+}
+
+.records-toolbar__main {
+  display: grid;
+  grid-template-columns: minmax(18rem, 1fr) auto auto;
+  align-items: end;
+  gap: var(--bcp-space-12);
+}
+
+@media (max-width: 48rem) {
+  .records-toolbar__main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Quick filter presets */
+.records-chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--bcp-space-8);
+  padding-top: var(--bcp-space-12);
+  border-top: 1px solid var(--bcp-border-color);
+}
+
+.records-chips__label {
+  font-size: var(--bcp-font-size-extra-small);
+  font-weight: var(--bcp-font-weight-demi);
+  color: var(--bcp-text-dark-500);
+  margin-right: var(--bcp-space-4);
+}
+
+/* Summary counters bar */
+.records-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bcp-space-16);
+  margin-bottom: var(--bcp-space-12);
+}
+
+.records-count {
+  font-weight: var(--bcp-font-weight-demi);
+  color: var(--bcp-text-dark-700);
+  font-size: var(--bcp-font-size-small);
+}
+
+/* Source badges with semantic tint */
+.source-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bcp-space-6);
+  padding: 0.2rem 0.625rem;
+  border-radius: var(--bcp-border-radius-full);
+  font-size: var(--bcp-font-size-extra-small);
+  font-weight: var(--bcp-font-weight-demi);
+  white-space: nowrap;
+}
+
+.source-tag--ai {
+  background: var(--bcp-color-blue-100);
+  color: var(--bcp-color-blue);
+  border: 1px solid var(--bcp-border-color);
+}
+
+.source-tag--clevertap {
+  background: var(--bcp-state-info-soft);
+  color: var(--bcp-state-info);
+  border: 1px solid var(--bcp-border-color);
+}
+
+.source-tag--qr {
+  background: var(--bcp-state-success-soft);
+  color: var(--bcp-state-success);
+  border: 1px solid var(--bcp-border-color);
+}
+
+.source-tag--traditional {
+  background: var(--bcp-color-background);
+  color: var(--bcp-text-dark-700);
+  border: 1px solid var(--bcp-border-color);
+}
+
+/* NPS badge pills */
+.nps-metric-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--bcp-border-radius-full);
+  font-weight: var(--bcp-font-weight-bold);
+  font-size: var(--bcp-font-size-small);
+}
+
+.nps-metric-pill--high {
+  background: var(--bcp-state-success-soft);
+  color: var(--bcp-state-success);
+}
+
+.nps-metric-pill--mid {
+  background: var(--bcp-color-blue-100);
+  color: var(--bcp-color-blue);
+}
+
+.nps-metric-pill--warn {
+  background: var(--bcp-state-warning-soft);
+  color: var(--bcp-state-warning);
+}
+
+.nps-metric-pill--detractor {
+  background: var(--bcp-state-error-soft);
+  color: var(--bcp-state-error);
+}
+
+/* Action button in table */
+.table-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bcp-space-4);
+  color: var(--bcp-color-blue);
+  font-size: var(--bcp-font-size-small);
+  font-weight: var(--bcp-font-weight-demi);
+  text-decoration: none;
+  transition: color var(--bcp-transition-fast), transform var(--bcp-transition-fast);
+}
+
+.table-action-link:hover,
+.table-action-link:focus-visible {
+  color: var(--bcp-color-orange);
+  transform: translateX(2px);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--bcp-space-8);
+  margin-top: var(--bcp-space-16);
+  list-style: none;
+}
+
+.pagination__link {
+  display: grid;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 1px solid var(--bcp-border-color);
+  border-radius: var(--bcp-border-radius-8);
+  background: var(--bcp-color-white);
+  color: var(--bcp-text-dark-900);
+  font-size: var(--bcp-font-size-small);
+  text-decoration: none;
+  transition: all var(--bcp-transition-fast);
+}
+
+.pagination__link:hover,
+.pagination__link:focus-visible,
+.pagination__link[aria-current="page"] {
+  border-color: var(--bcp-color-blue);
+  color: var(--bcp-color-blue);
+  background: var(--bcp-color-blue-100);
+}

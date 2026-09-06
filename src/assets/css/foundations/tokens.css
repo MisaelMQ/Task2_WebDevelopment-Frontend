@@ -1,0 +1,96 @@
+:root {
+  color-scheme: light;
+
+  --bcp-color-blue: #002a8d;
+  --bcp-color-blue-700: #001f6b;
+  --bcp-color-blue-100: #e8eefb;
+  --bcp-color-orange: #f26e29;
+  --bcp-color-orange-700: #d85b1d;
+  --bcp-color-orange-100: #fff0e8;
+  --bcp-color-white: #ffffff;
+  --bcp-color-surface: #ffffff;
+  --bcp-color-surface-hover: #fafbfe;
+  --bcp-color-background: #f5f7fb;
+  --bcp-color-disabled: #e9ebf2;
+  --bcp-color-overlay: rgb(24 27 49 / 58%);
+
+  --bcp-text-dark-900: #32335c;
+  --bcp-text-dark-700: #515372;
+  --bcp-text-dark-500: #74768f;
+  --bcp-text-on-dark: #ffffff;
+
+  --bcp-border-color: #d9ddea;
+  --bcp-border-color-strong: #aeb4c7;
+  --bcp-state-success: #248a5a;
+  --bcp-state-success-soft: #e7f6ef;
+  --bcp-state-warning: #ad6800;
+  --bcp-state-warning-soft: #fff5dc;
+  --bcp-state-error: #c9362b;
+  --bcp-state-error-soft: #fdecea;
+  --bcp-state-info: #1d66c2;
+  --bcp-state-info-soft: #e9f2fd;
+
+  --bcp-font-family-flexo: "Flexo", "Roboto", Arial, sans-serif;
+  --bcp-font-family-roboto: "Roboto", Arial, sans-serif;
+  --bcp-font-weight-regular: 400;
+  --bcp-font-weight-medium: 500;
+  --bcp-font-weight-demi: 600;
+  --bcp-font-weight-bold: 700;
+
+  --bcp-font-size-h1: 2rem;
+  --bcp-font-size-h2: 1.5rem;
+  --bcp-font-size-h3: 1.25rem;
+  --bcp-font-size-h4: 1.125rem;
+  --bcp-font-size-h5: 1rem;
+  --bcp-font-size-h6: 0.875rem;
+  --bcp-font-size-p-18: 1.125rem;
+  --bcp-font-size-p-16: 1rem;
+  --bcp-font-size-small: 0.875rem;
+  --bcp-font-size-extra-small: 0.75rem;
+
+  --bcp-font-line-height-h1: 2.5rem;
+  --bcp-font-line-height-h2: 2rem;
+  --bcp-font-line-height-h3: 1.75rem;
+  --bcp-font-line-height-h4: 1.5rem;
+  --bcp-font-line-height-h5: 1.5rem;
+  --bcp-font-line-height-h6: 1.25rem;
+  --bcp-font-line-height-p-18: 1.5rem;
+  --bcp-font-line-height-p-16: 1.5rem;
+  --bcp-font-line-height-small: 1.25rem;
+  --bcp-font-line-height-extra-small: 1rem;
+
+  --bcp-space-0: 0;
+  --bcp-space-2: 0.125rem;
+  --bcp-space-4: 0.25rem;
+  --bcp-space-6: 0.375rem;
+  --bcp-space-8: 0.5rem;
+  --bcp-space-12: 0.75rem;
+  --bcp-space-16: 1rem;
+  --bcp-space-20: 1.25rem;
+  --bcp-space-24: 1.5rem;
+  --bcp-space-28: 1.75rem;
+  --bcp-space-32: 2rem;
+  --bcp-space-36: 2.25rem;
+  --bcp-space-40: 2.5rem;
+  --bcp-space-44: 2.75rem;
+  --bcp-space-48: 3rem;
+  --bcp-space-52: 3.25rem;
+  --bcp-space-56: 3.5rem;
+  --bcp-space-60: 3.75rem;
+  --bcp-space-64: 4rem;
+
+  --bcp-border-radius-4: 0.25rem;
+  --bcp-border-radius-8: 0.5rem;
+  --bcp-border-radius-12: 0.75rem;
+  --bcp-border-radius-16: 1rem;
+  --bcp-border-radius-full: 999px;
+
+  --bcp-shadow-sm: 0 2px 8px rgb(34 39 78 / 8%);
+  --bcp-shadow-md: 0 8px 24px rgb(34 39 78 / 12%);
+  --bcp-shadow-lg: 0 20px 48px rgb(34 39 78 / 18%);
+
+  --bcp-container-width: 75rem;
+  --bcp-navbar-height: 4.5rem;
+  --bcp-transition-fast: 160ms ease;
+  --bcp-transition-base: 240ms ease;
+}
