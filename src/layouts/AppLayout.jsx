@@ -1,7 +1,42 @@
-import { NavLink, Outlet } from "react-router-dom";
+import {
+    NavLink,
+    Outlet,
+    useNavigate,
+} from "react-router-dom";
 import logoWhite from "../assets/img/logo/logo-white-with-bluebg-bo.svg";
+import { useAuth } from "../auth/useAuth.js";
+
+function getInitials(name) {
+    if (!name) {
+        return "US";
+    }
+
+    return name
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2)
+        .map((word) => word.charAt(0).toUpperCase())
+        .join("");
+}
 
 function AppLayout() {
+    const {
+        user,
+        logout,
+    } = useAuth();
+
+    const navigate = useNavigate();
+
+    const roleLabel =
+        user?.rol === "admin" ? "Administrador" : "Solo lectura";
+
+    function handleLogout() {
+        logout();
+        navigate("/login", {
+            replace: true,
+        });
+    }
+
     return (
         <div className="app-shell">
             <header className="navbar">
@@ -21,21 +56,40 @@ function AppLayout() {
                     <nav aria-label="Navegación principal">
                         <ul className="navbar__nav">
                             <li>
-                                <NavLink className="navbar__link" to="/dashboard">
+                                <NavLink
+                                    className="navbar__link"
+                                    to="/dashboard"
+                                >
                                     Dashboard
                                 </NavLink>
                             </li>
 
                             <li>
-                                <NavLink className="navbar__link" to="/canales">
+                                <NavLink
+                                    className="navbar__link"
+                                    to="/canales"
+                                >
                                     Canales
                                 </NavLink>
                             </li>
 
                             <li>
-                                <NavLink className="navbar__link" to="/encuestas">
+                                <NavLink
+                                    className="navbar__link"
+                                    to="/encuestas"
+                                >
                                     Encuestas
                                 </NavLink>
+                            </li>
+
+                            <li className="d-md-none">
+                                <button
+                                    className="navbar__link navbar__button"
+                                    type="button"
+                                    onClick={handleLogout}
+                                >
+                                    Salir
+                                </button>
                             </li>
                         </ul>
                     </nav>
@@ -43,20 +97,28 @@ function AppLayout() {
                     <div className="navbar__profile">
                         <div>
                             <p className="small-flexo text-demi">
-                                Usuario de prueba
+                                {user?.nombre}
                             </p>
+
                             <p className="extra-small-flexo">
-                                Sesión pendiente
+                                {roleLabel}
                             </p>
                         </div>
 
-                        <span className="navbar__avatar" aria-hidden="true">
-                            UP
+                        <span
+                            className="navbar__avatar"
+                            aria-hidden="true"
+                        >
+                            {getInitials(user?.nombre)}
                         </span>
 
-                        <NavLink className="navbar__link" to="/login">
+                        <button
+                            className="navbar__link navbar__button"
+                            type="button"
+                            onClick={handleLogout}
+                        >
                             Salir
-                        </NavLink>
+                        </button>
                     </div>
                 </div>
             </header>
