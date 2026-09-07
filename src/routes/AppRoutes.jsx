@@ -11,6 +11,7 @@ import LoginPage from "../pages/LoginPage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
 import AdminRoute from "./AdminRoute.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
+import SurveysPage from "../pages/SurveysPage.jsx";
 
 function AppRoutes() {
     return (
@@ -42,13 +43,7 @@ function AppRoutes() {
 
                     <Route
                         path="/encuestas"
-                        element={
-                            <PagePlaceholder
-                                title="Encuestas"
-                                description="Administración de encuestas NPS."
-                                icon="bi-clipboard-data"
-                            />
-                        }
+                        element={<SurveysPage />}
                     />
 
                     <Route element={<AdminRoute />}>

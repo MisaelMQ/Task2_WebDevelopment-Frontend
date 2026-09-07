@@ -196,3 +196,12 @@
 .table-action-link--danger:focus-visible {
   color: var(--bcp-state-error);
 }
+
+.survey-comment {
+  display: block;
+  max-width: 22rem;
+  overflow: hidden;
+  color: var(--bcp-text-dark-700);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
