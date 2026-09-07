@@ -434,7 +434,7 @@ function ChannelsPage() {
                                             <td>
                                                 <div className="data-table__actions">
                                                     <Link
-                                                        className="table-action-link"
+                                                        className="table-action-button"
                                                         to={`/canales/${channel.id}/editar`}
                                                     >
                                                         <i
