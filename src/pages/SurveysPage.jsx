@@ -10,6 +10,7 @@ import { listChannelsRequest } from "../api/channelsApi.js";
 import { ApiError } from "../api/http.js";
 import { listSurveysRequest } from "../api/surveysApi.js";
 import { useAuth } from "../auth/useAuth.js";
+import SurveyDeleteButton from "../components/surveys/SurveyDeleteButton.jsx";
 
 const INITIAL_RESULT = {
     data: [],
@@ -92,8 +93,11 @@ function SurveysPage() {
     const [channelOptionsError, setChannelOptionsError] =
         useState("");
 
-    const successMessage =
-        location.state?.successMessage ?? "";
+    const [successMessage, setSuccessMessage] = useState(
+        location.state?.successMessage ?? "",
+    );
+
+    const [reloadKey, setReloadKey] = useState(0);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -189,6 +193,7 @@ function SurveysPage() {
         accessToken,
         filters,
         page,
+        reloadKey
     ]);
 
     function updateFilter(field, value) {
@@ -224,6 +229,18 @@ function SurveysPage() {
         setFilters(INITIAL_FILTERS);
         setErrorMessage("");
         setPage(1);
+    }
+
+    function handleSurveyDeleted(survey) {
+        setSuccessMessage(
+            `La encuesta #${survey.id} fue eliminada correctamente.`,
+        );
+
+        if (result.data.length === 1 && page > 1) {
+            setPage((currentPage) => currentPage - 1);
+        } else {
+            setReloadKey((currentKey) => currentKey + 1);
+        }
     }
 
     const totalPages = Math.max(
@@ -567,13 +584,15 @@ function SurveysPage() {
                                         </td>
 
                                         <td>
-                                            <span className="channel-name">
-                                                {survey.canal_nombre}
-                                            </span>
+                                            <div className="survey-channel-cell">
+                                                <span className="channel-name">
+                                                    {survey.canal_nombre}
+                                                </span>
 
-                                            <span className="extra-small-flexo text-muted">
-                                                {survey.canal_codigo}
-                                            </span>
+                                                <span className="survey-channel-code">
+                                                    {survey.canal_codigo}
+                                                </span>
+                                            </div>
                                         </td>
 
                                         <td>
@@ -623,17 +642,19 @@ function SurveysPage() {
 
                                         {isAdmin && (
                                             <td>
-                                                <div className="data-table__actions">
+                                                <div className="table-actions">
                                                     <Link
-                                                        className="table-action-link"
+                                                        className="table-action-button"
                                                         to={`/encuestas/${survey.id}/editar`}
                                                     >
-                                                        <i
-                                                            className="bi bi-pencil-square"
-                                                            aria-hidden="true"
-                                                        />
+                                                        <i className="bi bi-pencil-square" aria-hidden="true" />
                                                         Editar
                                                     </Link>
+
+                                                    <SurveyDeleteButton
+                                                        survey={survey}
+                                                        onDeleted={handleSurveyDeleted}
+                                                    />
                                                 </div>
                                             </td>
                                         )}

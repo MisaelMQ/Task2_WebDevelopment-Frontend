@@ -295,3 +295,25 @@ fieldset.form-field legend {
   padding-top: var(--bcp-space-24);
   border-top: 1px solid var(--bcp-border-color);
 }
+
+/* React survey form adjustments */
+.form-field {
+  align-content: start;
+}
+
+.survey-category-preview {
+  display: flex;
+  min-height: 4.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--bcp-space-8);
+  padding: var(--bcp-space-16);
+  border: 1px solid var(--bcp-border-color);
+  border-radius: var(--bcp-border-radius-8);
+  background: var(--bcp-color-background);
+}
+
+.survey-category-preview .form-help {
+  margin: 0;
+}

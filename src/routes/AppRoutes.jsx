@@ -12,6 +12,7 @@ import NotFoundPage from "../pages/NotFoundPage.jsx";
 import AdminRoute from "./AdminRoute.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import SurveysPage from "../pages/SurveysPage.jsx";
+import SurveyFormPage from "../pages/SurveyFormPage.jsx";
 
 function AppRoutes() {
     return (
@@ -58,25 +59,13 @@ function AppRoutes() {
                         />
 
                         <Route
-                            path="/encuestas/nueva"
-                            element={
-                                <PagePlaceholder
-                                    title="Registrar encuesta"
-                                    description="Creación de una nueva encuesta NPS."
-                                    icon="bi-file-earmark-plus"
-                                />
-                            }
+                            path="encuestas/nueva"
+                            element={<SurveyFormPage />}
                         />
 
                         <Route
-                            path="/encuestas/:surveyId/editar"
-                            element={
-                                <PagePlaceholder
-                                    title="Editar encuesta"
-                                    description="Actualización de una encuesta existente."
-                                    icon="bi-pencil-square"
-                                />
-                            }
+                            path="encuestas/:surveyId/editar"
+                            element={<SurveyFormPage />}
                         />
                     </Route>
                 </Route>
