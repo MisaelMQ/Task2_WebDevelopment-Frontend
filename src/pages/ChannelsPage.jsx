@@ -445,7 +445,7 @@ function ChannelsPage() {
                                                     </Link>
 
                                                     <button
-                                                        className="table-action-link table-action-link--danger table-action-button"
+                                                        className="table-action-button table-action-danger"
                                                         type="button"
                                                         onClick={() =>
                                                             openDeleteDialog(channel)

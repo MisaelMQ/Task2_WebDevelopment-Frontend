@@ -3,7 +3,6 @@ import {
     Route,
     Routes,
 } from "react-router-dom";
-import PagePlaceholder from "../components/common/PagePlaceholder.jsx";
 import AppLayout from "../layouts/AppLayout.jsx";
 import ChannelFormPage from "../pages/ChannelFormPage.jsx";
 import ChannelsPage from "../pages/ChannelsPage.jsx";
@@ -13,6 +12,7 @@ import AdminRoute from "./AdminRoute.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import SurveysPage from "../pages/SurveysPage.jsx";
 import SurveyFormPage from "../pages/SurveyFormPage.jsx";
+import DashboardPage from "../pages/DashboardPage.jsx";
 
 function AppRoutes() {
     return (
@@ -27,14 +27,8 @@ function AppRoutes() {
             <Route element={<ProtectedRoute />}>
                 <Route element={<AppLayout />}>
                     <Route
-                        path="/dashboard"
-                        element={
-                            <PagePlaceholder
-                                title="Dashboard NPS"
-                                description="Resumen general de la experiencia del cliente."
-                                icon="bi-speedometer2"
-                            />
-                        }
+                        path="dashboard"
+                        element={<DashboardPage />}
                     />
 
                     <Route
