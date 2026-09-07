@@ -2,7 +2,10 @@ import {
     useEffect,
     useState,
 } from "react";
-import { Link } from "react-router-dom";
+import {
+    Link,
+    useLocation,
+} from "react-router-dom";
 import { listChannelsRequest } from "../api/channelsApi.js";
 import { ApiError } from "../api/http.js";
 import { useAuth } from "../auth/useAuth.js";
@@ -32,6 +35,10 @@ function ChannelsPage() {
         accessToken,
         isAdmin,
     } = useAuth();
+
+    const location = useLocation();
+    const successMessage =
+        location.state?.successMessage ?? "";
 
     const [result, setResult] = useState(INITIAL_RESULT);
     const [page, setPage] = useState(1);
@@ -218,6 +225,16 @@ function ChannelsPage() {
                     </div>
                 </div>
             </form>
+
+            {successMessage && (
+                <div
+                    className="alert alert-success"
+                    role="status"
+                    aria-live="polite"
+                >
+                    {successMessage}
+                </div>
+            )}
 
             {errorMessage && (
                 <div

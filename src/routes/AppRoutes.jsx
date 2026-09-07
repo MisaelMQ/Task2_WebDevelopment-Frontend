@@ -5,11 +5,12 @@ import {
 } from "react-router-dom";
 import PagePlaceholder from "../components/common/PagePlaceholder.jsx";
 import AppLayout from "../layouts/AppLayout.jsx";
+import ChannelFormPage from "../pages/ChannelFormPage.jsx";
+import ChannelsPage from "../pages/ChannelsPage.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
 import AdminRoute from "./AdminRoute.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
-import ChannelsPage from "../pages/ChannelsPage.jsx";
 
 function AppRoutes() {
     return (
@@ -34,7 +35,10 @@ function AppRoutes() {
                         }
                     />
 
-                    <Route path="/canales" element={<ChannelsPage />} />
+                    <Route
+                        path="/canales"
+                        element={<ChannelsPage />}
+                    />
 
                     <Route
                         path="/encuestas"
@@ -50,24 +54,12 @@ function AppRoutes() {
                     <Route element={<AdminRoute />}>
                         <Route
                             path="/canales/nuevo"
-                            element={
-                                <PagePlaceholder
-                                    title="Registrar canal"
-                                    description="Creación de un nuevo canal."
-                                    icon="bi-plus-circle"
-                                />
-                            }
+                            element={<ChannelFormPage />}
                         />
 
                         <Route
                             path="/canales/:channelId/editar"
-                            element={
-                                <PagePlaceholder
-                                    title="Editar canal"
-                                    description="Actualización de la información del canal."
-                                    icon="bi-pencil-square"
-                                />
-                            }
+                            element={<ChannelFormPage />}
                         />
 
                         <Route
