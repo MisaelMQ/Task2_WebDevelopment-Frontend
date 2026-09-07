@@ -6,9 +6,13 @@ import {
     Link,
     useLocation,
 } from "react-router-dom";
-import { listChannelsRequest } from "../api/channelsApi.js";
+import {
+    deleteChannelRequest,
+    listChannelsRequest,
+} from "../api/channelsApi.js";
 import { ApiError } from "../api/http.js";
 import { useAuth } from "../auth/useAuth.js";
+import ConfirmDialog from "../components/common/ConfirmDialog.jsx";
 
 const INITIAL_RESULT = {
     data: [],
@@ -37,16 +41,22 @@ function ChannelsPage() {
     } = useAuth();
 
     const location = useLocation();
-    const successMessage =
-        location.state?.successMessage ?? "";
 
     const [result, setResult] = useState(INITIAL_RESULT);
     const [page, setPage] = useState(1);
     const [searchInput, setSearchInput] = useState("");
     const [search, setSearch] = useState("");
     const [source, setSource] = useState("");
+    const [reloadKey, setReloadKey] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState(
+        location.state?.successMessage ?? "",
+    );
+    const [channelToDelete, setChannelToDelete] =
+        useState(null);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [deleteError, setDeleteError] = useState("");
 
     useEffect(() => {
         const controller = new AbortController();
@@ -100,6 +110,7 @@ function ChannelsPage() {
     }, [
         accessToken,
         page,
+        reloadKey,
         search,
         source,
     ]);
@@ -121,6 +132,59 @@ function ChannelsPage() {
         setSearch("");
         setSource("");
         setPage(1);
+    }
+
+    function openDeleteDialog(channel) {
+        setDeleteError("");
+        setChannelToDelete(channel);
+    }
+
+    function closeDeleteDialog() {
+        if (isDeleting) {
+            return;
+        }
+
+        setDeleteError("");
+        setChannelToDelete(null);
+    }
+
+    async function confirmDelete() {
+        if (!channelToDelete) {
+            return;
+        }
+
+        setIsDeleting(true);
+        setDeleteError("");
+
+        try {
+            await deleteChannelRequest(
+                channelToDelete.id,
+                accessToken,
+            );
+
+            const deletedChannelName = channelToDelete.nombre;
+
+            setChannelToDelete(null);
+            setSuccessMessage(
+                `El canal "${deletedChannelName}" fue eliminado correctamente.`,
+            );
+
+            if (result.data.length === 1 && page > 1) {
+                setPage((currentPage) => currentPage - 1);
+            } else {
+                setReloadKey((currentKey) => currentKey + 1);
+            }
+        } catch (error) {
+            if (error instanceof ApiError) {
+                setDeleteError(error.message);
+            } else {
+                setDeleteError(
+                    "Ocurrió un error inesperado al eliminar el canal.",
+                );
+            }
+        } finally {
+            setIsDeleting(false);
+        }
     }
 
     const totalPages = Math.max(
@@ -161,7 +225,10 @@ function ChannelsPage() {
                         className="button button--primary"
                         to="/canales/nuevo"
                     >
-                        <i className="bi bi-plus-circle" aria-hidden="true" />
+                        <i
+                            className="bi bi-plus-circle"
+                            aria-hidden="true"
+                        />
                         Registrar canal
                     </Link>
                 )}
@@ -173,7 +240,10 @@ function ChannelsPage() {
             >
                 <div className="records-toolbar__main">
                     <div className="form-field">
-                        <label className="form-label" htmlFor="channel-search">
+                        <label
+                            className="form-label"
+                            htmlFor="channel-search"
+                        >
                             Buscar canal
                         </label>
 
@@ -190,7 +260,10 @@ function ChannelsPage() {
                     </div>
 
                     <div className="form-field">
-                        <label className="form-label" htmlFor="channel-source">
+                        <label
+                            className="form-label"
+                            htmlFor="channel-source"
+                        >
                             Fuente
                         </label>
 
@@ -203,7 +276,9 @@ function ChannelsPage() {
                             <option value="">Todas las fuentes</option>
                             <option value="Agente IA">Agente IA</option>
                             <option value="CleverTap">CleverTap</option>
-                            <option value="Encuesta QR">Encuesta QR</option>
+                            <option value="Encuesta QR">
+                                Encuesta QR
+                            </option>
                         </select>
                     </div>
 
@@ -368,6 +443,20 @@ function ChannelsPage() {
                                                         />
                                                         Editar
                                                     </Link>
+
+                                                    <button
+                                                        className="table-action-link table-action-link--danger table-action-button"
+                                                        type="button"
+                                                        onClick={() =>
+                                                            openDeleteDialog(channel)
+                                                        }
+                                                    >
+                                                        <i
+                                                            className="bi bi-trash3"
+                                                            aria-hidden="true"
+                                                        />
+                                                        Eliminar
+                                                    </button>
                                                 </div>
                                             </td>
                                         )}
@@ -385,7 +474,9 @@ function ChannelsPage() {
                                 type="button"
                                 disabled={isLoading || page <= 1}
                                 onClick={() =>
-                                    setPage((currentPage) => currentPage - 1)
+                                    setPage(
+                                        (currentPage) => currentPage - 1,
+                                    )
                                 }
                                 aria-label="Página anterior"
                             >
@@ -411,7 +502,9 @@ function ChannelsPage() {
                                     page >= result.meta.total_pages
                                 }
                                 onClick={() =>
-                                    setPage((currentPage) => currentPage + 1)
+                                    setPage(
+                                        (currentPage) => currentPage + 1,
+                                    )
                                 }
                                 aria-label="Página siguiente"
                             >
@@ -424,6 +517,18 @@ function ChannelsPage() {
                     </ul>
                 </nav>
             </section>
+
+            {channelToDelete && (
+                <ConfirmDialog
+                    title="Eliminar canal"
+                    message={`¿Deseas eliminar el canal "${channelToDelete.codigo} - ${channelToDelete.nombre}"? Esta acción no se puede deshacer.`}
+                    confirmLabel="Eliminar canal"
+                    isProcessing={isDeleting}
+                    errorMessage={deleteError}
+                    onConfirm={confirmDelete}
+                    onCancel={closeDeleteDialog}
+                />
+            )}
         </div>
     );
 }

@@ -55,11 +55,25 @@
 }
 
 @keyframes bcp-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .loader {
     animation-duration: 1600ms;
   }
+}
+
+/* Compatibility with Bootstrap modal base styles */
+.modal-backdrop {
+  opacity: 1;
+}
+
+.modal {
+  position: relative;
+  inset: auto;
+  display: block;
+  height: auto;
 }
