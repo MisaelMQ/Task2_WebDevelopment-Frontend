@@ -1,0 +1,114 @@
+body {
+  background: var(--bcp-color-background);
+  color: var(--bcp-text-dark-900);
+  font-family: var(--bcp-font-family-flexo);
+  font-size: var(--bcp-font-size-p-16);
+  font-weight: var(--bcp-font-weight-regular);
+  line-height: var(--bcp-font-line-height-p-16);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--bcp-text-dark-900);
+  font-family: var(--bcp-font-family-flexo);
+  font-weight: var(--bcp-font-weight-demi);
+}
+
+h1,
+.h1-flexo {
+  font-size: var(--bcp-font-size-h1);
+  line-height: var(--bcp-font-line-height-h1);
+}
+
+h2,
+.h2-flexo {
+  font-size: var(--bcp-font-size-h2);
+  line-height: var(--bcp-font-line-height-h2);
+}
+
+h3,
+.h3-flexo {
+  font-size: var(--bcp-font-size-h3);
+  line-height: var(--bcp-font-line-height-h3);
+}
+
+h4,
+.h4-flexo {
+  font-size: var(--bcp-font-size-h4);
+  line-height: var(--bcp-font-line-height-h4);
+}
+
+h5,
+.h5-flexo {
+  font-size: var(--bcp-font-size-h5);
+  line-height: var(--bcp-font-line-height-h5);
+}
+
+h6,
+.h6-flexo {
+  font-size: var(--bcp-font-size-h6);
+  line-height: var(--bcp-font-line-height-h6);
+}
+
+p,
+.p-flexo {
+  font-size: var(--bcp-font-size-p-16);
+  line-height: var(--bcp-font-line-height-p-16);
+}
+
+.p-alt {
+  color: var(--bcp-text-dark-900);
+  font-family: var(--bcp-font-family-flexo);
+  font-size: var(--bcp-font-size-p-18);
+  font-weight: var(--bcp-font-weight-regular);
+  line-height: var(--bcp-font-line-height-p-18);
+}
+
+.small-flexo,
+small {
+  font-size: var(--bcp-font-size-small);
+  line-height: var(--bcp-font-line-height-small);
+}
+
+.extra-small-flexo {
+  font-size: var(--bcp-font-size-extra-small);
+  line-height: var(--bcp-font-line-height-extra-small);
+}
+
+.text-regular {
+  font-weight: var(--bcp-font-weight-regular);
+}
+
+.text-medium {
+  font-weight: var(--bcp-font-weight-medium);
+}
+
+.text-demi {
+  font-weight: var(--bcp-font-weight-demi);
+}
+
+.text-bold {
+  font-weight: var(--bcp-font-weight-bold);
+}
+
+.text-muted {
+  color: var(--bcp-text-dark-500);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

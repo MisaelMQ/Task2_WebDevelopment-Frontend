@@ -1,0 +1,79 @@
+.modal-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--bcp-space-24);
+  background: var(--bcp-color-overlay);
+}
+
+.modal {
+  width: min(100%, 30rem);
+  overflow: hidden;
+  border-radius: var(--bcp-border-radius-8);
+  background: var(--bcp-color-white);
+  box-shadow: var(--bcp-shadow-lg);
+}
+
+.modal__header,
+.modal__body,
+.modal__footer {
+  padding: var(--bcp-space-20) var(--bcp-space-24);
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bcp-space-16);
+  border-bottom: 1px solid var(--bcp-border-color);
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--bcp-space-12);
+  border-top: 1px solid var(--bcp-border-color);
+}
+
+.modal--loader .modal__body {
+  display: grid;
+  justify-items: center;
+  gap: var(--bcp-space-16);
+  padding-block: var(--bcp-space-40);
+  text-align: center;
+}
+
+.loader {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.25rem solid var(--bcp-color-blue-100);
+  border-top-color: var(--bcp-color-orange);
+  border-radius: 50%;
+  animation: bcp-spin 800ms linear infinite;
+}
+
+@keyframes bcp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader {
+    animation-duration: 1600ms;
+  }
+}
+
+/* Compatibility with Bootstrap modal base styles */
+.modal-backdrop {
+  opacity: 1;
+}
+
+.modal {
+  position: relative;
+  inset: auto;
+  display: block;
+  height: auto;
+}

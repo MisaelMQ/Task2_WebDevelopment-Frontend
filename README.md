@@ -1,16 +1,80 @@
-# React + Vite
+# BCP Tablero NPS - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada con React para administrar canales de atención
+y encuestas NPS.
 
-Currently, two official plugins are available:
+El Frontend consume una API REST desarrollada con FastAPI. Ambos proyectos
+son independientes y se comunican mediante peticiones HTTP autenticadas
+con JSON Web Tokens.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funcionalidades
 
-## React Compiler
+- Inicio de sesión.
+- Autenticación mediante JWT.
+- Protección de rutas privadas.
+- Autorización basada en roles.
+- Dashboard dinámico.
+- CRUD completo de canales.
+- CRUD completo de encuestas.
+- Filtros y paginación.
+- Clasificación automática NPS.
+- Diseño responsivo.
+- Interfaz basada en el sistema visual BCP.
+- Confirmación antes de eliminar registros.
+- Manejo centralizado de errores HTTP.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+- React
+- JavaScript
+- HTML5
+- CSS3
+- Vite
+- React Router
+- Bootstrap
+- Bootstrap Icons
+- Fetch API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Requisitos
+
+Antes de ejecutar el proyecto se necesita:
+
+- Node.js 20.19 o superior.
+- npm.
+- Backend de BCP Tablero NPS ejecutándose.
+- Git, si se clonará el repositorio.
+
+Versiones utilizadas durante el desarrollo:
+
+- Node.js 24.19.0
+- npm 11.17.0
+- Vite 8.2.2
+
+## Estructura principal
+
+```text
+Frontend/
+├── public/
+├── src/
+│   ├── api/
+│   │   ├── authApi.js
+│   │   ├── channelsApi.js
+│   │   ├── http.js
+│   │   └── surveysApi.js
+│   ├── assets/
+│   │   ├── css/
+│   │   └── img/
+│   ├── auth/
+│   ├── components/
+│   │   ├── channels/
+│   │   ├── common/
+│   │   └── surveys/
+│   ├── config/
+│   ├── layouts/
+│   ├── pages/
+│   ├── routes/
+│   ├── App.jsx
+│   └── main.jsx
+├── .env.example
+├── package.json
+└── vite.config.js

@@ -1,0 +1,319 @@
+/* ==========================================================================
+   Form Page Styles - CX Insight
+   ========================================================================== */
+
+/* Main form layout: primary card and sidebar guidance */
+.form-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20rem;
+  gap: var(--bcp-space-24);
+  align-items: start;
+}
+
+@media (max-width: 62rem) {
+  .form-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-card {
+  padding: var(--bcp-space-32);
+  border-top: 3px solid var(--bcp-color-orange);
+  transition: box-shadow var(--bcp-transition-base);
+}
+
+.form-card:hover {
+  box-shadow: var(--bcp-shadow-md);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--bcp-space-20) var(--bcp-space-24);
+}
+
+@media (max-width: 40rem) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-grid__full {
+  grid-column: 1 / -1;
+}
+
+.form-section+.form-section {
+  margin-top: var(--bcp-space-32);
+  padding-top: var(--bcp-space-32);
+  border-top: 1px solid var(--bcp-border-color);
+}
+
+.form-section__header {
+  display: grid;
+  gap: var(--bcp-space-4);
+  margin-bottom: var(--bcp-space-24);
+}
+
+.form-section__title {
+  display: flex;
+  align-items: center;
+  gap: var(--bcp-space-8);
+  color: var(--bcp-color-blue);
+  font-size: var(--bcp-font-size-h4);
+  font-weight: var(--bcp-font-weight-demi);
+}
+
+fieldset.form-field {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+fieldset.form-field legend {
+  float: left;
+  width: 100%;
+  margin-bottom: var(--bcp-space-8);
+  padding: 0;
+}
+
+/* Enhanced radio button choice cards for status */
+.choice-card-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--bcp-space-12);
+}
+
+.choice-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: var(--bcp-space-12) var(--bcp-space-16);
+  border: 1px solid var(--bcp-border-color-strong);
+  border-radius: var(--bcp-border-radius-8);
+  background: var(--bcp-color-white);
+  cursor: pointer;
+  transition:
+    background-color var(--bcp-transition-fast),
+    border-color var(--bcp-transition-fast);
+  user-select: none;
+}
+
+.choice-card:hover {
+  border-color: var(--bcp-color-blue);
+  background: var(--bcp-color-blue-100);
+}
+
+.choice-card:has(input:focus-visible) {
+  outline: 3px solid rgb(0 42 141 / 18%);
+  outline-offset: 2px;
+}
+
+.choice-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice-card__indicator {
+  display: inline-block;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: var(--bcp-border-radius-full);
+  background: var(--bcp-text-dark-500);
+  transition: transform var(--bcp-transition-fast), background var(--bcp-transition-fast);
+}
+
+.choice-card__label {
+  font-size: var(--bcp-font-size-small);
+  font-weight: var(--bcp-font-weight-demi);
+  color: var(--bcp-text-dark-700);
+}
+
+.choice-card-group--three {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--bcp-space-12);
+}
+
+@media (max-width: 40rem) {
+  .choice-card-group--three {
+    grid-template-columns: 1fr;
+  }
+}
+
+.choice-card:has(input[value="activo"]:checked),
+.choice-card:has(input[value="promotor"]:checked) {
+  border-color: var(--bcp-state-success);
+  background: var(--bcp-state-success-soft);
+}
+
+.choice-card:has(input[value="activo"]:checked) .choice-card__indicator,
+.choice-card:has(input[value="promotor"]:checked) .choice-card__indicator {
+  background: var(--bcp-state-success);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 3px rgb(36 138 90 / 20%);
+}
+
+.choice-card:has(input[value="activo"]:checked) .choice-card__label,
+.choice-card:has(input[value="promotor"]:checked) .choice-card__label {
+  color: var(--bcp-state-success);
+}
+
+.choice-card:has(input[value="pasivo"]:checked) {
+  border-color: var(--bcp-state-warning);
+  background: var(--bcp-state-warning-soft);
+}
+
+.choice-card:has(input[value="pasivo"]:checked) .choice-card__indicator {
+  background: var(--bcp-state-warning);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 3px rgba(173, 104, 0, 0.2);
+}
+
+.choice-card:has(input[value="pasivo"]:checked) .choice-card__label {
+  color: var(--bcp-state-warning);
+}
+
+.choice-card:has(input[value="detractor"]:checked) {
+  border-color: var(--bcp-state-error);
+  background: var(--bcp-state-error-soft);
+}
+
+.choice-card:has(input[value="detractor"]:checked) .choice-card__indicator {
+  background: var(--bcp-state-error);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 3px rgba(201, 54, 43, 0.2);
+}
+
+.choice-card:has(input[value="detractor"]:checked) .choice-card__label {
+  color: var(--bcp-state-error);
+}
+
+.choice-card:has(input[value="inactivo"]:checked) {
+  border-color: var(--bcp-text-dark-500);
+  background: var(--bcp-color-background);
+}
+
+.choice-card:has(input[value="inactivo"]:checked) .choice-card__indicator {
+  background: var(--bcp-text-dark-500);
+  transform: scale(1.2);
+}
+
+.choice-card:has(input[value="inactivo"]:checked) .choice-card__label {
+  color: var(--bcp-text-dark-700);
+}
+
+/* Sidebar guidance card */
+.form-guide-card {
+  padding: var(--bcp-space-24);
+}
+
+.form-guide-header {
+  display: flex;
+  align-items: center;
+  gap: var(--bcp-space-8);
+  margin-bottom: var(--bcp-space-16);
+  padding-bottom: var(--bcp-space-12);
+  border-bottom: 1px solid var(--bcp-border-color);
+}
+
+.form-guide-title {
+  color: var(--bcp-color-blue);
+  font-size: var(--bcp-font-size-p-16);
+  font-weight: var(--bcp-font-weight-demi);
+  margin: 0;
+}
+
+.form-guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bcp-space-16);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.form-guide-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--bcp-space-12);
+}
+
+.form-guide-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.35rem;
+  height: 1.75rem;
+  padding: 0 var(--bcp-space-6);
+  border-radius: var(--bcp-border-radius-8);
+  background: var(--bcp-color-blue-100);
+  color: var(--bcp-color-blue);
+  font-size: var(--bcp-font-size-extra-small);
+  font-weight: var(--bcp-font-weight-bold);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.form-guide-badge--promoter {
+  background: var(--bcp-state-success-soft);
+  color: var(--bcp-state-success);
+}
+
+.form-guide-badge--passive {
+  background: var(--bcp-state-warning-soft);
+  color: var(--bcp-state-warning);
+}
+
+.form-guide-badge--detractor {
+  background: var(--bcp-state-error-soft);
+  color: var(--bcp-state-error);
+}
+
+.form-guide-text {
+  margin: 0;
+  font-size: var(--bcp-font-size-small);
+  line-height: 1.45;
+  color: var(--bcp-text-dark-700);
+}
+
+.form-guide-text strong {
+  display: block;
+  color: var(--bcp-text-dark-900);
+  margin-bottom: var(--bcp-space-2);
+}
+
+/* Actions footer */
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--bcp-space-12);
+  margin-top: var(--bcp-space-32);
+  padding-top: var(--bcp-space-24);
+  border-top: 1px solid var(--bcp-border-color);
+}
+
+/* React survey form adjustments */
+.form-field {
+  align-content: start;
+}
+
+.survey-category-preview {
+  display: flex;
+  min-height: 4.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--bcp-space-8);
+  padding: var(--bcp-space-16);
+  border: 1px solid var(--bcp-border-color);
+  border-radius: var(--bcp-border-radius-8);
+  background: var(--bcp-color-background);
+}
+
+.survey-category-preview .form-help {
+  margin: 0;
+}
